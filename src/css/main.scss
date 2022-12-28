@@ -44,7 +44,7 @@ main {
 		max-width: 375px;
 		margin-inline: auto;
 		display: grid;
-		// align-items: center;
+		align-items: center;
 
 		@media screen and (min-width: $mediaMinWidth_desktop) {
 			max-width: $mediaMinWidth_desktop;
