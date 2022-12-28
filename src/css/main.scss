@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+:root {
+	--clr-red: #ec775f;
+	--clr-cyan: #76b5bc;
+	--clr-dark-brown: #382314;
+	--clr-med-brown: #93867b;
+	--clr-cream: #f8e9dd;
+	--clr-very-pale-orange: #fffaf5;
+	--ff-body: 'DM Sans', sans-serif;
+	--fw-regular: 400;
+	--fw-bold: 700;
+}
+
+$mediaMinWidth_desktop: 572px;
+$footerMaxHeight: 2.5rem;
+
+body,
+input {
+	font-family: var(--ff-body);
+}
+
+body {
+	background-color: var(--clr-cream);
+}
+
+main {
+	overflow: auto;
+
+	.container {
+		height: calc(100vh - $footerMaxHeight);
+		min-width: 375px;
+		max-width: 375px;
+		margin-inline: auto;
+		display: grid;
+		// align-items: center;
+
+		@media screen and (min-width: $mediaMinWidth_desktop) {
+			max-width: $mediaMinWidth_desktop;
+		}
+
+		.inner-container {
+			.main-grid {
+				display: grid;
+				gap: 1rem;
+				padding: 1rem;
+
+				@media screen and (min-width: $mediaMinWidth_desktop) {
+					gap: 1.5rem;
+				}
+
+				.my-balance-card,
+				.chart-card {
+					background: var(--clr-very-pale-orange);
+					border-radius: 0.6rem;
+					padding: 1.25rem;
+
+					@media screen and (min-width: $mediaMinWidth_desktop) {
+						border-radius: 1.4rem;
+						// padding: 1.95rem;
+						padding-top: 1.75rem;
+						padding-left: 2rem;
+					}
+				}
+
+				.my-balance-card {
+					font-size: 0.925rem;
+					color: var(--clr-very-pale-orange);
+					background: var(--clr-red);
+					display: flex;
+					justify-content: space-between;
+					padding-right: 1.5rem;
+					height: 97px;
+
+					@media screen and (min-width: $mediaMinWidth_desktop) {
+						font-size: 1.12rem;
+						padding-right: 2.45rem;
+						height: 126px;
+					}
+
+					&__text-content {
+						display: grid;
+						gap: 0.17rem;
+
+						&__dollar {
+							font-size: 1.5rem;
+							font-weight: var(--fw-bold);
+
+							@media screen and (min-width: $mediaMinWidth_desktop) {
+								font-size: 2rem;
+							}
+						}
+					}
+
+					img {
+						width: 60px;
+
+						@media screen and (min-width: $mediaMinWidth_desktop) {
+							width: 72px;
+							margin-bottom: 0.3rem;
+						}
+					}
+				}
+
+				.chart-card {
+					display: grid;
+					gap: 1.6rem;
+					padding-block: 1.5rem;
+
+					@media screen and (min-width: $mediaMinWidth_desktop) {
+						padding: 2rem 2.51rem;
+					}
+
+					.chart {
+						&__heading {
+							font-size: 1.5rem;
+							color: var(--clr-dark-brown);
+
+							// margin-bottom: 3rem;
+							@media screen and (min-width: $mediaMinWidth_desktop) {
+								font-size: 2rem;
+							}
+						}
+
+						&__days {
+							display: flex;
+							gap: 0.75rem;
+							justify-content: space-between;
+							height: 203px;
+
+							@media screen and (min-width: $mediaMinWidth_desktop) {
+								gap: 1.1rem;
+								height: 218px;
+								margin-bottom: 0.5rem;
+							}
+						}
+
+						&__day {
+							font-size: 0.75rem;
+							display: grid;
+							gap: 0.69rem;
+							grid-template-rows: 1fr auto;
+							text-align: center;
+							width: 100%;
+							color: var(--clr-med-brown);
+
+							@media screen and (min-width: $mediaMinWidth_desktop) {
+								font-size: 0.95rem;
+								gap: 0.5rem;
+							}
+
+							&.current {
+								.bar {
+									background: var(--clr-cyan);
+								}
+							}
+
+							.bar {
+								margin-top: auto;
+								border-radius: 0.25rem;
+								background: var(--clr-red);
+								cursor: pointer;
+								position: relative;
+
+								&__amount {
+									font-size: 0.6rem;
+									font-weight: var(--fw-bold);
+									background: var(--clr-dark-brown);
+									padding: 0.25rem;
+									border-radius: 0.25rem;
+									color: var(--clr-very-pale-orange);
+									position: absolute;
+									top: -30px;
+									left: -30%;
+									right: -30%;
+									display: none;
+								}
+
+								&:hover {
+									.bar__amount {
+										display: unset;
+									}
+
+									&::after {
+										content: '';
+										position: absolute;
+										inset: 0;
+										background: #fff;
+										opacity: 0.3;
+									}
+								}
+							}
+						}
+					}
+
+					.total-this-month {
+						font-size: 0.95rem;
+						border-top: 2px solid var(--clr-cream);
+						padding-top: 1.5rem;
+						color: var(--clr-med-brown);
+						display: flex;
+						justify-content: space-between;
+
+						@media screen and (min-width: $mediaMinWidth_desktop) {
+							font-size: 1.14rem;
+							padding-top: 1.9rem;
+						}
+
+						&__price,
+						&__percent {
+							font-size: 1.88rem;
+							font-weight: var(--fw-bold);
+							color: var(--clr-dark-brown);
+
+							@media screen and (min-width: $mediaMinWidth_desktop) {
+								font-size: 3rem;
+							}
+						}
+
+						&__percent {
+							font-size: 0.95rem;
+
+							@media screen and (min-width: $mediaMinWidth_desktop) {
+								font-size: 1.15rem;
+							}
+						}
+
+						&__left {
+							display: grid;
+							gap: 0.25rem;
+
+							@media screen and (min-width: $mediaMinWidth_desktop) {
+								gap: 0;
+							}
+						}
+
+						&__right {
+							text-align: right;
+							padding-top: 1.4rem;
+
+							@media screen and (min-width: $mediaMinWidth_desktop) {
+								padding-top: 1.95rem;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+footer {
+	font-size: 0.8rem;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 0.25rem;
+	text-align: center;
+	height: $footerMaxHeight;
+	display: grid;
+	place-content: center;
+	background: #fff;
+
+	a {
+		color: blue;
+	}
+}
